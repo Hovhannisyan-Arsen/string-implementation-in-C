@@ -13,5 +13,7 @@ static unsigned int char_length(char* str);
 /* Helper functions begin*/
 
 str_t* c_string_construct(char* str);
-
+void c_string_destruct(str_t* str);
 void c_string_print(str_t* str, FILE* f);
+unsigned int c_string_length(str_t* str);
+str_t* c_string_concat(str_t* first, str_t* second);

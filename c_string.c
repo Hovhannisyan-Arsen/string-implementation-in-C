@@ -1,5 +1,6 @@
 #include "c_string.h"
 #include <stdlib.h>
+#include <string.h>
 
 str_t* create_c_string(const unsigned int length) {
     str_t* string = (str_t*)malloc(sizeof(str_t));
@@ -24,6 +25,26 @@ str_t* c_string_construct(char* str)
     return string;
 }
 
-void c_string_print(str_t *str, FILE* f) {
+void c_string_destruct(str_t* str)
+{
+    free(str->data);
+    free(str);
+}
+
+void c_string_print(str_t *str, FILE* f)
+{
     fprintf(f, "%s", str->data);
+}
+
+unsigned int c_string_length(str_t* str)
+{
+    return str->length;
+}
+
+str_t* c_string_concat(str_t* first, str_t* second)
+{
+    str_t* concat_string = create_c_string(first->length + second->length);
+    memcpy(concat_string->data, first->data, c_string_length(first));
+    memcpy(concat_string->data + first->length, second->data, c_string_length(second));
+    return concat_string;
 }
