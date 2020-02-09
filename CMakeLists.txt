@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.8)
 
 project(c_string)
 
-set(SOURCE_EXE main.cpp)
+set(SOURCE_EXE main.c)
 
-set(SOURCE_LIB c_string.cpp)
+set(SOURCE_LIB c_string.c)
 
 add_library(c_string STATIC ${SOURCE_LIB})
 
