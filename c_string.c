@@ -48,3 +48,9 @@ str_t* c_string_concat(str_t* first, str_t* second)
     memcpy(concat_string->data + first->length, second->data, c_string_length(second));
     return concat_string;
 }
+
+str_t* c_string_clone(str_t* str)
+{
+    str_t* clone_string = c_string_construct(str->data);
+    return clone_string;
+}
