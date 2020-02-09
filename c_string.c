@@ -8,7 +8,7 @@ str_t* create_c_string(const unsigned int length) {
     string->length = length;
     return string;
 }
-#include <assert.h>
+
 static unsigned int char_length(char* str)
 {
     unsigned int counter = 0;
