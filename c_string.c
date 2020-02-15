@@ -2,16 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-str_t* create_c_string(const unsigned int length) {
+str_t* create_c_string(const uint length) {
     str_t* string = (str_t*)malloc(sizeof(str_t));
     string->data = (char*)malloc(length);
     string->length = length;
     return string;
 }
-#include <assert.h>
-static unsigned int char_length(char* str)
+
+static uint char_length(char* str)
 {
-    unsigned int counter = 0;
+    uint counter = 0;
     while(*(str + counter) != '\0') {
         ++counter;
     }
@@ -36,7 +36,7 @@ void c_string_print(str_t *str, FILE* f)
     fprintf(f, "%s", str->data);
 }
 
-unsigned int c_string_length(str_t* str)
+uint c_string_length(str_t* str)
 {
     return str->length;
 }
@@ -53,4 +53,15 @@ str_t* c_string_clone(str_t* str)
 {
     str_t* clone_string = c_string_construct(str->data);
     return clone_string;
+}
+
+uint c_string_index_of(str_t* str, char c)
+{
+    uint length = c_string_length(str);
+    for (uint i = 0; i < length; ++i) {
+        if (*(str->data + i) == c) {
+            return i;
+        }
+    }
+    return -1;
 }
